@@ -1,7 +1,6 @@
--- require("cmp_config")
 require("setup.lsp")
 require("setup.telescope")
---require("plugins_config.neodev_config")
+require("setup.neodev")
 require("setup.treesitter")
 require("setup.nvim_tree")
 require("setup.colorscheme")
