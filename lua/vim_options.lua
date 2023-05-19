@@ -17,7 +17,7 @@ vim.o.clipboard = 'unnamedplus'
 -- text options
 vim.opt.scrolloff = 8
 vim.opt.wrap = false
-vim.wo.signcolumn = 'yes'
+vim.wo.signcolumn = 'number'
 vim.opt.colorcolumn = "80"
 vim.o.termguicolors = true
 
