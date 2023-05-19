@@ -1,0 +1,8 @@
+-- require("cmp_config")
+require("setup.lsp")
+require("setup.telescope")
+--require("plugins_config.neodev_config")
+require("setup.treesitter")
+require("setup.nvim_tree")
+require("setup.colorscheme")
+require("indent_blankline")
