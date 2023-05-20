@@ -4,4 +4,5 @@ require("nvim-tree").setup({
       side = "right",
     },
   })
-vim.keymap.set('n', '<leader>n', ":NvimTreeToggle<CR>", {})
+
+vim.keymap.set('n', '<leader>n', ":NvimTreeToggle<cr>", {})
