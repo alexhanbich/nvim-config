@@ -2,20 +2,40 @@ return {
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
   'tpope/vim-sleuth',
+  'nvim-tree/nvim-web-devicons',
+  'willothy/nvim-cokeline',
+  "lukas-reineke/indent-blankline.nvim",
+  'folke/which-key.nvim',
+  {
+    'Shatur/neovim-session-manager',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+  },
+  {
+    'akinsho/toggleterm.nvim',
+    version = "*",
+    config = true
+  },
   {
     'hrsh7th/nvim-cmp',
-    dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip', 'rafamadriz/friendly-snippets' },
+    dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip',
+      'rafamadriz/friendly-snippets' },
   },
   {
-      'rebelot/kanagawa.nvim',
-      priority = 1000,
+    'goolord/alpha-nvim',
+    config = function()
+      require 'alpha'.setup(require 'start_screen'.config)
+    end
   },
-  { 'numToStr/Comment.nvim', opts = {} },
   {
-    -- Adds git releated signs to the gutter, as well as utilities for managing changes
+    lazy = false,
+    priority = 1000,
+    "catppuccin/nvim",
+    name = "catppuccin",
+    dependencies = { 'nvim-lua/plenary.nvim' }
+  },
+  {
     'lewis6991/gitsigns.nvim',
     opts = {
-      -- See `:help gitsigns.txt`
       signs = {
         add = { text = '+' },
         change = { text = '~' },
@@ -23,43 +43,32 @@ return {
         topdelete = { text = '‾' },
         changedelete = { text = '~' },
       },
-      on_attach = function(bufnr)
-        vim.keymap.set('n', '[c', require('gitsigns').prev_hunk, { buffer = bufnr, desc = 'Go to Previous Hunk' })
-        vim.keymap.set('n', ']c', require('gitsigns').next_hunk, { buffer = bufnr, desc = 'Go to Next Hunk' })
-        vim.keymap.set('n', '<leader>ph', require('gitsigns').preview_hunk, { buffer = bufnr, desc = '[P]review [H]unk' })
-      end,
     },
   },
-  { "lukas-reineke/indent-blankline.nvim" },
   {
-    -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     dependencies = {
-      -- Automatically install LSPs to stdpath for neovim
       { 'williamboman/mason.nvim', config = true },
       'williamboman/mason-lspconfig.nvim',
-
-      -- Useful status updates for LSP
-      -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', opts = {} },
-
-      -- Additional lua configuration, makes nvim stuff amazing!
+      { 'j-hui/fidget.nvim',       opts = {} },
       'folke/neodev.nvim',
     },
   },
   {
-    -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
-    -- See `:help lualine.txt`
     opts = {
       options = {
         icons_enabled = false,
-        component_separators = '|',
+        component_separators = ' ▏',
         section_separators = '',
       },
     },
   },
-  { 'nvim-telescope/telescope.nvim', branch = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' } },
+  {
+    'nvim-telescope/telescope.nvim',
+    branch = '0.1.x',
+    dependencies = { 'nvim-lua/plenary.nvim' }
+  },
   {
     'nvim-telescope/telescope-fzf-native.nvim',
     build = 'make',
@@ -74,13 +83,9 @@ return {
     },
     build = ':TSUpdate',
   },
-  { 'folke/which-key.nvim', opts = {} },
   {
     "nvim-tree/nvim-tree.lua",
     version = "*",
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-    },
     config = function()
       require("nvim-tree").setup {}
     end,

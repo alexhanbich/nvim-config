@@ -1,6 +1,6 @@
 -- set mapleader to space
+vim.keymap.set({ 'n', 'v' }, '<space>', '<Nop>', { silent = true })
 vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
 
 -- disable netrw
 vim.g.loaded_netrw = 1
@@ -22,6 +22,7 @@ vim.opt.rtp:prepend(lazypath)
 
 -- import plugin specs
 require("lazy").setup("plugins")
+
 require("setup")
 
 -- import vim options

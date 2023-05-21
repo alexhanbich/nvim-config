@@ -17,9 +17,15 @@ vim.o.clipboard = 'unnamedplus'
 -- text options
 vim.opt.scrolloff = 8
 vim.opt.wrap = false
-vim.wo.signcolumn = 'number'
-vim.opt.colorcolumn = "80"
+vim.wo.signcolumn = 'yes'
+vim.opt.colorcolumn = '80'
 vim.o.termguicolors = true
+vim.o.background = 'dark'
+
+-- tabs
+vim.o.tabstop = 2
+vim.o.shiftwidth = 2
+vim.o.expandtab = true
 
 -- Save undo history
 vim.o.undofile = true
