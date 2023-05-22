@@ -4,7 +4,7 @@ return {
   'tpope/vim-sleuth',
   'nvim-tree/nvim-web-devicons',
   "lukas-reineke/indent-blankline.nvim",
-    {
+  {
     'willothy/nvim-cokeline',
     config = function()
       require('cokeline').setup()
@@ -12,11 +12,13 @@ return {
   },
   {
     "folke/which-key.nvim",
-    config = function()
+    event = "VeryLazy",
+    init = function()
       vim.o.timeout = true
-      vim.o.timeoutlen = 700
-      require("which-key").setup {}
+      vim.o.timeoutlen = 300
     end,
+    opts = {
+    }
   },
   {
     'Shatur/neovim-session-manager',
@@ -38,7 +40,7 @@ return {
       require 'alpha'.setup(require 'start_screen'.config)
     end
   },
-    {
+  {
     'lewis6991/gitsigns.nvim',
     opts = {
       signs = {

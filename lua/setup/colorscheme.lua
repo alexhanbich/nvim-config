@@ -1,7 +1,5 @@
 vim.cmd("colorscheme everforest")
 
-vim.api.nvim_set_hl(0, 'SignColumn', { clear })
-
 -- change background color
 vim.keymap.set('n', '<leader>bg1', function()
     vim.cmd("colorscheme kanagawa")
