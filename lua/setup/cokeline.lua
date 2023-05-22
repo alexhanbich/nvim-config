@@ -1,8 +1,3 @@
--- reload
-vim.cmd("highlight GitSignsAdd guibg=NONE")
-vim.cmd("highlight GitSignsChange guibg=NONE")
-vim.cmd("highlight GitSignsDelete guibg=NONE")
-
 -- base colors
 local green = "#00FF00"
 local red = "#FF0000"
