@@ -1,5 +1,12 @@
-vim.cmd("colorscheme everforest")
+vim.api.nvim_create_autocmd('ColorScheme', {
+  callback = function()
+    vim.cmd("highlight GitSignsAdd guibg=NONE")
+    vim.cmd("highlight GitSignsChange guibg=NONE")
+    vim.cmd("highlight GitSignsDelete guibg=NONE")
+  end
+})
 
+vim.cmd("colorscheme everforest")
 -- change background color
 vim.keymap.set('n', '<leader>b1', function()
     vim.cmd("colorscheme kanagawa")
