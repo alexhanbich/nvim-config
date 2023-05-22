@@ -32,9 +32,4 @@ require("vim_options")
 -- import key mappings
 require("remaps")
 
--- remove GitSigns highlight AFTER colorscheme loads
-vim.cmd("highlight GitSignsAdd guibg=NONE")
-vim.cmd("highlight GitSignsChange guibg=NONE")
-vim.cmd("highlight GitSignsDelete guibg=NONE")
-
 
