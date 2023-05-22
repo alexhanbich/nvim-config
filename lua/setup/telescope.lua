@@ -3,9 +3,6 @@ require('telescope').setup {
    buffers = {
       initial_mode = 'normal',
     },
-    git_files = {
-      initial_mode = "normal",
-    },
     old_files = {
       initial_mode = "normal",
     },
@@ -15,19 +12,13 @@ require('telescope').setup {
     search_history = {
       initial_mode = "normal",
     },
-    lsp_references = {
-      initial_mode = "normal",
-    },
-    diagnostics = {
-      initial_mode = "normal",
-    },
-    lsp_definitions = {
-      initial_mode = "normal",
-    },
     git_commits = {
       initial_mode = "normal",
     },
     git_status = {
+      initial_mode = "normal",
+    },
+    git_branches = {
       initial_mode = "normal",
     },
   },
@@ -35,7 +26,6 @@ require('telescope').setup {
     sessions_picker = {
       sessions_dir = vim.fn.stdpath('data') ..'/session/',  -- same as '/home/user/.local/share/nvim/session'
     }
-    -- other tele extensions configs
   },
 }
 
