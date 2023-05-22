@@ -1,13 +1,47 @@
-local catppuccino = require("catppuccin.palettes").get_palette()
+-- base colors
+local green = "#00FF00"
+local red = "#FF0000"
+local yellow = "#FFFF00"
+local fg = "#000000"
+local bg = "#FFFFFF"
+local sfg = "#FFFFFF"
+local sbg = "#00000"
 
-local get_hex = require('cokeline/utils').get_hex
+if vim.g.colors_name == 'kanagawa' then
+  green = "#87a987"
+  red = "#c4746e"
+  yellow = "#c4b28a"
+  fg = "#c5c9c5"
+  bg = "#181616"
+  sfg = "#c5c9c5"
+  sbg = "#393836"
+end
+
+if vim.g.colors_name == 'everforest' then
+  green = "#83c092"
+  red = "#e67280"
+  yellow = "#dbbc7f"
+  fg = "#9da9a0"
+  bg = "#475258"
+  sfg = "#9da9a0"
+  sbg = "#293136"
+end
+
+if vim.g.colors_name == 'nordic' then
+  green = "#83c092"
+  red = "#e67280"
+  yellow = "#dbbc7f"
+  fg = "#9da9a0"
+  bg = "#475258"
+  sfg = "#9da9a0"
+  sbg = "#293136"
+end
+
+
+print(vim.g.colors_name)
+
 
 local str_rep = string.rep
-
-local bar_bg = catppuccino.base
-local bar_bg2 = catppuccino.indicator
-
-local green = catppuccino.green
 
 local min_buffer_width = 24
 
@@ -37,8 +71,8 @@ local components = {
     end,
     fg = function(buffer)
       return
-          (buffer.diagnostics.errors ~= 0 and catppuccino.red)
-          or (buffer.diagnostics.warnings ~= 0 and catppuccino.yellow)
+          (buffer.diagnostics.errors ~= 0 and red)
+          or (buffer.diagnostics.warnings ~= 0 and yellow)
           or nil
     end,
     truncation = { priority = 1 },
@@ -48,7 +82,7 @@ local components = {
     text = function(buffer)
       return buffer.unique_prefix
     end,
-    fg = catppuccino.surface2,
+    fg = fg,
     style = 'italic',
     truncation = {
       priority = 3,
@@ -62,15 +96,14 @@ local components = {
     end,
     fg = function(buffer)
       return
-          (buffer.diagnostics.errors ~= 0 and catppuccino.red)
-          or (buffer.diagnostics.warnings ~= 0 and catppuccino.yellow)
+          (buffer.diagnostics.errors ~= 0 and red)
+          or (buffer.diagnostics.warnings ~= 0 and yellow)
           or nil
     end,
     style = function(buffer)
       return
           ((buffer.is_focused and buffer.diagnostics.errors ~= 0)
-            and 'bold,underline')
-          or (buffer.is_focused and 'bold')
+            and 'underline')
           or (buffer.diagnostics.errors ~= 0 and 'underline')
           or nil
     end,
@@ -88,8 +121,8 @@ local components = {
     end,
     fg = function(buffer)
       return
-          (buffer.diagnostics.errors ~= 0 and catppuccino.red)
-          or (buffer.diagnostics.warnings ~= 0 and catppuccino.yellow)
+          (buffer.diagnostics.errors ~= 0 and red)
+          or (buffer.diagnostics.warnings ~= 0 and yellow)
           or nil
     end,
     truncation = { priority = 1 },
@@ -137,14 +170,14 @@ require('cokeline').setup({
     fg = function(buffer)
       return
           buffer.is_focused
-          and catppuccino.text
-          or catppuccino.surface2
+          and sfg
+          or fg
     end,
     bg = function(buffer)
       return
           buffer.is_focused
-          and catppuccino.surface0
-          or catppuccino.base
+          and sbg
+          or bg
     end,
   },
   components = {
@@ -171,6 +204,6 @@ vim.keymap.set('n', '<leader>q', function()
 end)
 
 for i = 1, 9 do
-  map('n', ('<Leader>%s'):format(i), ('<Plug>(cokeline-focus-%s)'):format(i), { silent = true })
-  map('n', ('<Leader><Leader>%s'):format(i), ('<Plug>(cokeline-switch-%s)'):format(i), { silent = true })
+  map('n', ('<Leader>%s'):format(i), ('<Plug>(cokeline-focus-%s)'):format(i), { desc = ('Focus Tab #%s'):format(i), silent = true })
+  map('n', ('<Leader>>%s'):format(i), ('<Plug>(cokeline-switch-%s)'):format(i), {desc = ( 'Focus Tab #%s'):format(i), silent = true })
 end
