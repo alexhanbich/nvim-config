@@ -3,5 +3,5 @@ require('session_manager').setup({
   autoload_mode = config.AutoloadMode.CurrentDir,
 })
 
-vim.keymap.set('n', '<leader>rs', ":SessionManager load_last_session<cr>", { desc = "Reload Last Session", slient = true })
+vim.keymap.set('n', '<leader>rs', ":SessionManager load_last_session<cr>", { desc = "Reload Last Session", silent = true })
 

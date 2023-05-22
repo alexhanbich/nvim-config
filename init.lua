@@ -1,5 +1,5 @@
 -- set mapleader to space
-vim.keymap.set({ 'n', 'v' }, '<space>', '<Nop>', { silent = true })
+vim.keymap.set({ 'n', 'v' }, '<space>', '<Nop>', {})
 vim.g.mapleader = ' '
 
 -- disable netrw
