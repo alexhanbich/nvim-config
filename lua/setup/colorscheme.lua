@@ -1,8 +1,10 @@
 vim.cmd("colorscheme everforest")
 
+vim.api.nvim_set_hl(0, 'SignColumn', { clear })
+
 -- change background color
 vim.keymap.set('n', '<leader>bg1', function()
-    vim.cmd("colorscheme catppuccin-frappe")
+    vim.cmd("colorscheme kanagawa")
     for k in pairs(package.loaded) do
         if k:match("^setup.cokeline") then
             package.loaded[k] = nil
@@ -11,7 +13,7 @@ vim.keymap.set('n', '<leader>bg1', function()
     require("setup.cokeline")
 end)
 vim.keymap.set('n', '<leader>bg2', function()
-    vim.cmd("colorscheme catppuccin-macchiato")
+    vim.cmd("colorscheme everforest")
     for k in pairs(package.loaded) do
         if k:match("^setup.cokeline") then
             package.loaded[k] = nil
@@ -20,7 +22,7 @@ vim.keymap.set('n', '<leader>bg2', function()
     require("setup.cokeline")
 end)
 vim.keymap.set('n', '<leader>bg3', function()
-    vim.cmd("colorscheme catppuccin-mocha")
+    vim.cmd("colorscheme nordic")
     for k in pairs(package.loaded) do
         if k:match("^setup.cokeline") then
             package.loaded[k] = nil
@@ -29,7 +31,7 @@ vim.keymap.set('n', '<leader>bg3', function()
     require("setup.cokeline")
 end)
 vim.keymap.set('n', '<leader>bg4', function()
-    vim.cmd("colorscheme catppuccin-latte")
+    vim.cmd("colorscheme onenord")
     for k in pairs(package.loaded) do
         if k:match("^setup.cokeline") then
             package.loaded[k] = nil

@@ -22,9 +22,9 @@ if vim.g.colors_name == 'everforest' then
   red = "#e67280"
   yellow = "#dbbc7f"
   fg = "#9da9a0"
-  bg = "#475258"
+  bg = "#414b50"
   sfg = "#9da9a0"
-  sbg = "#293136"
+  sbg = "#272e33"
 end
 
 if vim.g.colors_name == 'nordic' then
@@ -32,9 +32,9 @@ if vim.g.colors_name == 'nordic' then
   red = "#e67280"
   yellow = "#dbbc7f"
   fg = "#9da9a0"
-  bg = "#475258"
+  bg = "#434f55"
   sfg = "#9da9a0"
-  sbg = "#293136"
+  sbg = "#333c43"
 end
 
 
@@ -105,7 +105,7 @@ local components = {
           ((buffer.is_focused and buffer.diagnostics.errors ~= 0)
             and 'underline')
           or (buffer.diagnostics.errors ~= 0 and 'underline')
-          or nil
+          or (buffer.is_focused) and 'italic'
     end,
     truncation = {
       priority = 2,
@@ -143,18 +143,28 @@ local components = {
 local get_remaining_space = function(buffer)
   local used_space = 0
   for _, component in pairs(components) do
-    used_space = used_space + vim.fn.strwidth(
-      (type(component.text) == 'string' and component.text)
-      or (type(component.text) == 'function' and component.text(buffer))
-    )
+    local str = ''
+    if (type(component.text) == 'string') then
+      str = tostring(component.text)
+    elseif (type(component.text) == 'function') then
+      str = component.text(buffer)
+    end
+    used_space = used_space + vim.fn.strwidth(str)
   end
   return math.max(0, min_buffer_width - used_space)
 end
 
+local left_padding = {
+  text = function(buffer)
+    local remaining_space = get_remaining_space(buffer)
+    return str_rep(' ', remaining_space / 2 + remaining_space % 2)
+  end,
+}
+
 local right_padding = {
   text = function(buffer)
     local remaining_space = get_remaining_space(buffer)
-    return str_rep(' ', remaining_space)
+    return str_rep(' ', remaining_space / 2)
   end,
 }
 
@@ -182,6 +192,7 @@ require('cokeline').setup({
   },
   components = {
     components.separator,
+    left_padding,
     components.devicon,
     components.index,
     components.unique_prefix,
