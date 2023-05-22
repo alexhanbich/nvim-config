@@ -28,13 +28,13 @@ if vim.g.colors_name == 'everforest' then
 end
 
 if vim.g.colors_name == 'nordic' then
-  green = "#83c092"
-  red = "#e67280"
-  yellow = "#dbbc7f"
-  fg = "#9da9a0"
-  bg = "#434f55"
-  sfg = "#9da9a0"
-  sbg = "#333c43"
+  green = "#A3BE8C"
+  red = "#BF616A"
+  yellow = "#EBCB8B"
+  fg = "#c0c8d8"
+  bg = "#191c24"
+  sfg = "#c0c8d8"
+  sbg = "#242933"
 end
 
 
