@@ -32,4 +32,7 @@ require("vim_options")
 -- import key mappings
 require("remaps")
 
+local color = require("setup.color")
+color.git_color(color)
+
 

@@ -1,46 +1,35 @@
-vim.api.nvim_create_autocmd('ColorScheme', {
-  callback = function()
-    vim.cmd("highlight GitSignsAdd guibg=NONE")
-    vim.cmd("highlight GitSignsChange guibg=NONE")
-    vim.cmd("highlight GitSignsDelete guibg=NONE")
-  end
-})
+local clear = function()
+    for k in pairs(package.loaded) do
+        if k:match("^setup.cokeline") then
+            package.loaded[k] = nil
+        end
+        if k:match("^setup.color") then
+            package.loaded[k] = nil
+        end
+        if k:match("^setup.git_signs") then
+            package.loaded[k] = nil
+        end
 
-vim.cmd("colorscheme everforest")
--- change background color
-vim.keymap.set('n', '<leader>b1', function()
-    vim.cmd("colorscheme kanagawa")
-    for k in pairs(package.loaded) do
-        if k:match("^setup.cokeline") then
-            package.loaded[k] = nil
-        end
     end
-    require("setup.cokeline")
-end)
-vim.keymap.set('n', '<leader>b2', function()
-    vim.cmd("colorscheme everforest")
-    for k in pairs(package.loaded) do
-        if k:match("^setup.cokeline") then
-            package.loaded[k] = nil
-        end
-    end
-    require("setup.cokeline")
-end)
-vim.keymap.set('n', '<leader>b3', function()
-    vim.cmd("colorscheme nordic")
-    for k in pairs(package.loaded) do
-        if k:match("^setup.cokeline") then
-            package.loaded[k] = nil
-        end
-    end
-    require("setup.cokeline")
-end)
-vim.keymap.set('n', '<leader>b4', function()
-    vim.cmd("colorscheme onenord")
-    for k in pairs(package.loaded) do
-        if k:match("^setup.cokeline") then
-            package.loaded[k] = nil
-        end
-    end
-    require("setup.cokeline")
-end)
+end
+
+
+local theme = "everforest"
+vim.cmd("colorscheme " .. theme)
+
+
+local iter_theme = {
+    "kanagawa",
+    "everforest",
+    "nordic",
+    "onenord",
+}
+
+for i = 1, #iter_theme, 1 do
+    vim.keymap.set('n', '<leader>b' .. tostring(i), function()
+        vim.cmd("colorscheme " .. iter_theme[i])
+        clear()
+        require("setup.cokeline")
+        require("setup.git_signs")
+    end)
+end

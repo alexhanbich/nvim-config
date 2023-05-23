@@ -1,45 +1,4 @@
--- base colors
-local green = "#00FF00"
-local red = "#FF0000"
-local yellow = "#FFFF00"
-local fg = "#000000"
-local bg = "#FFFFFF"
-local sfg = "#FFFFFF"
-local sbg = "#00000"
-
-if vim.g.colors_name == 'kanagawa' then
-  green = "#87a987"
-  red = "#c4746e"
-  yellow = "#c4b28a"
-  fg = "#c5c9c5"
-  bg = "#181616"
-  sfg = "#c5c9c5"
-  sbg = "#393836"
-end
-
-if vim.g.colors_name == 'everforest' then
-  green = "#83c092"
-  red = "#e67280"
-  yellow = "#dbbc7f"
-  fg = "#9da9a0"
-  bg = "#414b50"
-  sfg = "#9da9a0"
-  sbg = "#272e33"
-end
-
-if vim.g.colors_name == 'nordic' then
-  green = "#A3BE8C"
-  red = "#BF616A"
-  yellow = "#EBCB8B"
-  fg = "#c0c8d8"
-  bg = "#191c24"
-  sfg = "#c0c8d8"
-  sbg = "#242933"
-end
-
-
-print(vim.g.colors_name)
-
+local color = require("setup.color")
 
 local str_rep = string.rep
 
@@ -71,8 +30,8 @@ local components = {
     end,
     fg = function(buffer)
       return
-          (buffer.diagnostics.errors ~= 0 and red)
-          or (buffer.diagnostics.warnings ~= 0 and yellow)
+          (buffer.diagnostics.errors ~= 0 and color.red)
+          or (buffer.diagnostics.warnings ~= 0 and color.yellow)
           or nil
     end,
     truncation = { priority = 1 },
@@ -82,7 +41,7 @@ local components = {
     text = function(buffer)
       return buffer.unique_prefix
     end,
-    fg = fg,
+    fg = color.fg,
     style = 'italic',
     truncation = {
       priority = 3,
@@ -96,8 +55,8 @@ local components = {
     end,
     fg = function(buffer)
       return
-          (buffer.diagnostics.errors ~= 0 and red)
-          or (buffer.diagnostics.warnings ~= 0 and yellow)
+          (buffer.diagnostics.errors ~= 0 and color.red)
+          or (buffer.diagnostics.warnings ~= 0 and color.yellow)
           or nil
     end,
     style = function(buffer)
@@ -121,8 +80,8 @@ local components = {
     end,
     fg = function(buffer)
       return
-          (buffer.diagnostics.errors ~= 0 and red)
-          or (buffer.diagnostics.warnings ~= 0 and yellow)
+          (buffer.diagnostics.errors ~= 0 and color.red)
+          or (buffer.diagnostics.warnings ~= 0 and color.yellow)
           or nil
     end,
     truncation = { priority = 1 },
@@ -133,7 +92,7 @@ local components = {
       return buffer.is_modified and '  ' or '  '
     end,
     fg = function(buffer)
-      return buffer.is_modified and green or nil
+      return buffer.is_modified and color.green or nil
     end,
     delete_buffer_on_left_click = true,
     truncation = { priority = 1 },
@@ -180,14 +139,14 @@ require('cokeline').setup({
     fg = function(buffer)
       return
           buffer.is_focused
-          and sfg
-          or fg
+          and color.sfg
+          or color.fg
     end,
     bg = function(buffer)
       return
           buffer.is_focused
-          and sbg
-          or bg
+          and color.sbg
+          or color.bg
     end,
   },
   components = {
