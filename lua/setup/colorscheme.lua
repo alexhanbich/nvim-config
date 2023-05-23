@@ -13,8 +13,6 @@ local clear = function()
     end
 end
 
-print(vim.g.colors_name)
-
 vim.api.nvim_create_autocmd('ColorScheme', {
   callback = function()
     clear()

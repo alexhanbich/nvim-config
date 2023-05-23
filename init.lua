@@ -32,12 +32,4 @@ require("vim_options")
 -- import key mappings
 require("remaps")
 
-vim.api.nvim_create_autocmd('VimEnter', {
-  callback = function()
-    -- local theme = "everforest"
-    -- vim.cmd("colorscheme " .. theme)
-    local color = require("setup.color")
-    color.git_color(color)
-  end,
-})
 

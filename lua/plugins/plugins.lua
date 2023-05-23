@@ -11,16 +11,16 @@ return {
     end
   },
   {
-      "folke/which-key.nvim",
-      event = "VeryLazy",
-     init = function()
-        vim.o.timeout = true
-        vim.o.timeoutlen = 700
-      end,
-      opts = {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    init = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 700
+    end,
+    opts = {
       triggers = "none"
-      }
-    },
+    }
+  },
   {
     'Shatur/neovim-session-manager',
     dependencies = { 'nvim-lua/plenary.nvim' },
@@ -43,6 +43,15 @@ return {
   },
   {
     'lewis6991/gitsigns.nvim',
+    options = {
+      signs = {
+        add = { text = '+' },
+        change = { text = '~' },
+        delete = { text = '_' },
+        topdelete = { text = '‾' },
+        changedelete = { text = '~' },
+      }
+    },
   },
   {
     'neovim/nvim-lspconfig',

@@ -54,11 +54,8 @@ end
 
 local git_color = function(color)
     vim.cmd("highlight GitSignsAdd guifg=" .. color.green)
-    -- vim.cmd("highlight GitSignsAdd guibg=" .. color.sidebar)
     vim.cmd("highlight GitSignsChange guifg=" .. color.yellow)
-    -- vim.cmd("highlight GitSignsChange guibg=" .. color.sidebar)
     vim.cmd("highlight GitSignsDelete guifg=" .. color.red)
-    -- vim.cmd("highlight GitSignsDelete guibg=" .. color.sidebar)
 end
 
 
