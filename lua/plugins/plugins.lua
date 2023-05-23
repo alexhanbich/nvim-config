@@ -18,7 +18,9 @@ return {
       vim.o.timeoutlen = 700
     end,
     opts = {
-      triggers = "none"
+      -- triggers = "none",
+      show_help = false,
+      show_keys = false,
     }
   },
   {
