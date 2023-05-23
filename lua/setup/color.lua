@@ -32,21 +32,33 @@ end
 
 if vim.g.colors_name == 'nordic' then
   green = "#A3BE8C"
-  red = "#BF616A"
+  red = "#D57780"
   yellow = "#EBCB8B"
-  fg = "#c0c8d8"
-  bg = "#191c24"
+  fg = "#C8D0E0"
+  bg = "#2e3440"
   sfg = "#c0c8d8"
   sbg = "#242933"
 end
 
+if vim.g.colors_name == 'onenord' then
+  green = "#A3BE8C"
+  red = "#D57780"
+  yellow = "#EBCB8B"
+  fg = "#c0c8d8"
+  bg = "#333b4a"
+  sfg = "#c0c8d8"
+  sbg = "#2E3440"
+  sidebar = "#ffff00"
+end
+
+
 local git_color = function(color)
     vim.cmd("highlight GitSignsAdd guifg=" .. color.green)
-    vim.cmd("highlight GitSignsAdd guibg=" .. color.sidebar)
+    -- vim.cmd("highlight GitSignsAdd guibg=" .. color.sidebar)
     vim.cmd("highlight GitSignsChange guifg=" .. color.yellow)
-    vim.cmd("highlight GitSignsChange guibg=" .. color.sidebar)
+    -- vim.cmd("highlight GitSignsChange guibg=" .. color.sidebar)
     vim.cmd("highlight GitSignsDelete guifg=" .. color.red)
-    vim.cmd("highlight GitSignsDelete guibg=" .. color.sidebar)
+    -- vim.cmd("highlight GitSignsDelete guibg=" .. color.sidebar)
 end
 
 

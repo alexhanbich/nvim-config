@@ -13,16 +13,22 @@ local clear = function()
     end
 end
 
+print(vim.g.colors_name)
 
-local theme = "everforest"
-vim.cmd("colorscheme " .. theme)
-
+vim.api.nvim_create_autocmd('ColorScheme', {
+  callback = function()
+    clear()
+    require("setup.cokeline")
+    local color = require("setup.color")
+    color.git_color(color)
+  end,
+})
 
 local iter_theme = {
     "kanagawa",
-    "everforest",
     "nordic",
     "onenord",
+    "everforest",
 }
 
 for i = 1, #iter_theme, 1 do
@@ -30,6 +36,5 @@ for i = 1, #iter_theme, 1 do
         vim.cmd("colorscheme " .. iter_theme[i])
         clear()
         require("setup.cokeline")
-        require("setup.git_signs")
     end)
 end

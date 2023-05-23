@@ -64,7 +64,7 @@ local components = {
           ((buffer.is_focused and buffer.diagnostics.errors ~= 0)
             and 'underline')
           or (buffer.diagnostics.errors ~= 0 and 'underline')
-          or (buffer.is_focused) and 'italic'
+          or (buffer.is_focused) and 'bold,underline'
     end,
     truncation = {
       priority = 2,
