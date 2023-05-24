@@ -4,6 +4,31 @@ return {
   'tpope/vim-sleuth',
   'nvim-tree/nvim-web-devicons',
   "lukas-reineke/indent-blankline.nvim",
+  { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
+  {
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup()
+    end
+  },
+  {
+    "utilyre/barbecue.nvim",
+    name = "barbecue",
+    version = "*",
+    dependencies = {
+      "SmiteshP/nvim-navic",
+      "nvim-tree/nvim-web-devicons", -- optional dependency
+    },
+    opts = {
+      theme = {
+        basename = { bold = false }
+      },
+    },
+  },
+  {
+    'stevearc/oil.nvim',
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+  },
   {
     'willothy/nvim-cokeline',
     config = function()
@@ -33,11 +58,6 @@ return {
     config = true
   },
   {
-    'hrsh7th/nvim-cmp',
-    dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip',
-      'rafamadriz/friendly-snippets' },
-  },
-  {
     'goolord/alpha-nvim',
     config = function()
       require 'alpha'.setup(require 'start_screen'.config)
@@ -53,23 +73,6 @@ return {
         topdelete = { text = '‾' },
         changedelete = { text = '~' },
       }
-    },
-  },
-  {
-    'neovim/nvim-lspconfig',
-    dependencies = {
-      {
-        'williamboman/mason.nvim',
-        config = true
-      },
-      'williamboman/mason-lspconfig.nvim',
-      'j-hui/fidget.nvim',
-      {
-        'folke/neodev.nvim',
-        config = function()
-          require("neodev").setup {}
-        end
-      },
     },
   },
   {
@@ -100,12 +103,5 @@ return {
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
     build = ':TSUpdate',
-  },
-  {
-    "nvim-tree/nvim-tree.lua",
-    version = "*",
-    config = function()
-      require("nvim-tree").setup {}
-    end,
   },
 }

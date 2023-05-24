@@ -1,5 +1,13 @@
 return {
   {
+    'sainnhe/gruvbox-material',
+    priority = 1000,
+  },
+{
+    'sainnhe/sonokai',
+    priority = 1000,
+  },
+  {
     "rebelot/kanagawa.nvim",
     priority = 1000,
     config = function()
@@ -22,7 +30,6 @@ return {
         }
       }
     end
-
   },
   {
     'rmehri01/onenord.nvim',

@@ -6,7 +6,6 @@ local fg = "#000000"
 local bg = "#FFFFFF"
 local sfg = "#FFFFFF"
 local sbg = "#00000"
-local sidebar = "#00000"
 
 if vim.g.colors_name == 'kanagawa' then
   green = "#87a987"
@@ -16,7 +15,6 @@ if vim.g.colors_name == 'kanagawa' then
   bg = "#181616"
   sfg = "#c5c9c5"
   sbg = "#393836"
-  sidebar = "#282727"
 end
 
 if vim.g.colors_name == 'everforest' then
@@ -25,9 +23,8 @@ if vim.g.colors_name == 'everforest' then
   yellow = "#dbbc7f"
   fg = "#9da9a0"
   bg = "#414b50"
-  sfg = "#9da9a0"
-  sbg = "#272e33"
-  sidebar = sbg
+  sfg = "#272e33"
+  sbg = "#a7c080"
 end
 
 if vim.g.colors_name == 'nordic' then
@@ -48,7 +45,6 @@ if vim.g.colors_name == 'onenord' then
   bg = "#333b4a"
   sfg = "#c0c8d8"
   sbg = "#2E3440"
-  sidebar = "#ffff00"
 end
 
 
@@ -56,6 +52,9 @@ local git_color = function(color)
     vim.cmd("highlight GitSignsAdd guifg=" .. color.green)
     vim.cmd("highlight GitSignsChange guifg=" .. color.yellow)
     vim.cmd("highlight GitSignsDelete guifg=" .. color.red)
+    vim.cmd("highlight GitSignsChangedelete guifg=" .. color.yellow)
+    vim.cmd("highlight GitSignsTopdelete guifg=" .. color.red)
+    vim.cmd("highlight GitSignsUntracked guifg=" .. color.red)
 end
 
 
@@ -68,6 +67,5 @@ return {
   bg = bg,
   sfg = sfg,
   sbg =sbg,
-  sidebar = sidebar,
   git_color = git_color,
 }

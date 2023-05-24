@@ -2,12 +2,18 @@ local color = require("setup.color")
 
 local str_rep = string.rep
 
-local min_buffer_width = 24
+local min_buffer_width = 22
 
 local components = {
   separator = {
     text = function(buffer)
       return buffer.index ~= 1 and '▏' or ' '
+    end,
+    truncation = { priority = 1 }
+  },
+  separator_end = {
+    text = function(buffer)
+      return buffer.is_last and '▕' or ' '
     end,
     truncation = { priority = 1 }
   },
@@ -28,47 +34,19 @@ local components = {
     text = function(buffer)
       return buffer.index .. ' '
     end,
-    fg = function(buffer)
-      return
-          (buffer.diagnostics.errors ~= 0 and color.red)
-          or (buffer.diagnostics.warnings ~= 0 and color.yellow)
-          or nil
-    end,
-    truncation = { priority = 1 },
+   truncation = { priority = 1 },
   },
-
-  unique_prefix = {
-    text = function(buffer)
-      return buffer.unique_prefix
-    end,
-    fg = color.fg,
-    style = 'italic',
-    truncation = {
-      priority = 3,
-      direction = 'left',
-    },
-  },
-
   filename = {
     text = function(buffer)
       return buffer.filename
     end,
     fg = function(buffer)
       return
-          (buffer.diagnostics.errors ~= 0 and color.red)
-          or (buffer.diagnostics.warnings ~= 0 and color.yellow)
-          or nil
+          buffer.is_focused and color.bg or color.fg
     end,
-    style = function(buffer)
-      return
-          ((buffer.is_focused and buffer.diagnostics.errors ~= 0)
-            and 'underline')
-          or (buffer.diagnostics.errors ~= 0 and 'underline')
-          or (buffer.is_focused) and 'bold,underline'
-    end,
-    truncation = {
+   truncation = {
       priority = 2,
-      direction = 'left',
+      direction = 'right',
     },
   },
   diagnostics = {
@@ -80,24 +58,11 @@ local components = {
     end,
     fg = function(buffer)
       return
-          (buffer.diagnostics.errors ~= 0 and color.red)
-          or (buffer.diagnostics.warnings ~= 0 and color.yellow)
-          or nil
-    end,
+          buffer.is_focused and color.bg or color.fg
+         end,
     truncation = { priority = 1 },
   },
-
-  close_or_unsaved = {
-    text = function(buffer)
-      return buffer.is_modified and '  ' or '  '
-    end,
-    fg = function(buffer)
-      return buffer.is_modified and color.green or nil
-    end,
-    delete_buffer_on_left_click = true,
-    truncation = { priority = 1 },
-  },
-}
+  }
 
 local get_remaining_space = function(buffer)
   local used_space = 0
@@ -116,21 +81,28 @@ end
 local left_padding = {
   text = function(buffer)
     local remaining_space = get_remaining_space(buffer)
-    return str_rep(' ', remaining_space / 2 + remaining_space % 2)
+    return str_rep(' ', remaining_space / 2) 
   end,
 }
 
 local right_padding = {
   text = function(buffer)
     local remaining_space = get_remaining_space(buffer)
-    return str_rep(' ', remaining_space / 2)
+    return str_rep(' ', remaining_space / 2 + remaining_space % 2)
   end,
 }
 
 require('cokeline').setup({
   buffers = {
-    focus_on_delete = 'next',
+    focus_on_delete = 'prev',
     new_buffers_position = 'next',
+    filter_valid = function(buffer) 
+      if string.find(buffer.filename, ".") then
+        return true
+      else
+        return false
+      end
+    end,
   },
   rendering = {
     max_buffer_width = min_buffer_width,
@@ -154,19 +126,18 @@ require('cokeline').setup({
     left_padding,
     components.devicon,
     components.index,
-    components.unique_prefix,
     components.filename,
     components.space,
-    right_padding,
     components.diagnostics,
-    components.close_or_unsaved,
+    right_padding,
+    components.separator_end,
   },
 })
 
 local map = vim.api.nvim_set_keymap
 
-map('n', '<S-Tab>', '<Plug>(cokeline-focus-prev)', { silent = true })
-map('n', '<Tab>', '<Plug>(cokeline-focus-next)', { silent = true })
+map('n', '<leader><S-Tab>', '<Plug>(cokeline-focus-prev)', { silent = true })
+map('n', '<leader><Tab>', '<Plug>(cokeline-focus-next)', { silent = true })
 vim.keymap.set('n', '<leader>q', function()
   local bufnr = vim.api.nvim_get_current_buf()
   vim.cmd('bn')

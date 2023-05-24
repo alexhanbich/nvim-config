@@ -21,18 +21,23 @@ vim.api.nvim_create_autocmd('ColorScheme', {
     end,
 })
 
+vim.g.gruvbox_material_background = "medium"
+
+vim.cmd("colorscheme everforest")
+
 local iter_theme = {
-    "kanagawa",
     "nordic",
     "onenord",
     "everforest",
+    "gruvbox-material",
 }
 
-local select = function(i)
-    vim.cmd("colorscheme " .. iter_theme[i])
-    clear()
-    require("setup.cokeline")
-end
+local iter_sonokai = {
+    "default",
+    "andromeda",
+    "shusia",
+}
+
 
 for i = 1, #iter_theme, 1 do
     vim.keymap.set('n', '<leader>b' .. tostring(i),
@@ -43,9 +48,12 @@ for i = 1, #iter_theme, 1 do
         end)
 end
 
-vim.api.nvim_create_autocmd('VimEnter', {
-    callback = function()
-        print("hi")
-        select(3)
-    end
-})
+for i = 1, #iter_sonokai, 1 do
+    vim.keymap.set('n', '<leader>b' .. tostring(i) + #iter_theme,
+        function()
+            vim.g.sonokai_style = iter_sonokai[i]
+            vim.cmd("colorscheme sonokai")
+            clear()
+            require("setup.cokeline")
+        end)
+end

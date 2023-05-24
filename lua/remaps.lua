@@ -5,6 +5,9 @@ vim.keymap.set('n', '<leader>df', vim.diagnostic.open_float, { desc = 'Open floa
 vim.keymap.set('n', '<leader>dl', vim.diagnostic.setloclist, { desc = 'Open diagnostics list', silent = true })
 
 vim.keymap.set('n', '<leader>w', ':w<cr>', { desc = 'Save', silent = true })
+vim.keymap.set({ 'n', 'v' }, '<bs>', '<Nop>', {silent = true, remap = false })
+
+vim.keymap.set('n', '<leader>p', ':Format<cr>', { desc = 'Format', silent = true })
 
 -- highlight on yank
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
@@ -15,3 +18,5 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
+
+

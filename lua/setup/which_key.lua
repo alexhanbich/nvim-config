@@ -1,5 +1,4 @@
 local wk = require("which-key")
-
 wk.register({
     ["1"] = "which_key_ignore",
     ["2"] = "which_key_ignore",

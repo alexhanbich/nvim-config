@@ -1,4 +1,12 @@
 require('telescope').setup {
+  defaults = {
+        layout_config = {
+        horizontal = {
+            preview_width = 0.6,
+            width = 0.9
+          },
+        },
+  },
   pickers = {
    buffers = {
       initial_mode = 'normal',
