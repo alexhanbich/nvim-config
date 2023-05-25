@@ -6,6 +6,27 @@ return {
   "lukas-reineke/indent-blankline.nvim",
   { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
   {
+    'alexhanbich/tabline.nvim',
+    config = function()
+      require 'tabline'.setup {
+        enable = false,
+        options = {
+          section_separators = {'', ''},
+          component_separators = {'', ''},
+          max_bufferline_percent = 100,
+          show_tabs_always = false,
+          show_devicons = true,
+          show_bufnr = true,
+          show_filename_only = true,
+          modified_icon = "+ ",
+          modified_italic = false,
+          show_tabs_only = false,
+        }
+      }
+    end,
+    dependencies = { 'nvim-lualine/lualine.nvim', 'nvim-tree/nvim-web-devicons' }
+  },
+  {
     'numToStr/Comment.nvim',
     config = function()
       require('Comment').setup()
@@ -28,12 +49,6 @@ return {
   {
     'stevearc/oil.nvim',
     dependencies = { "nvim-tree/nvim-web-devicons" },
-  },
-  {
-    'willothy/nvim-cokeline',
-    config = function()
-      require('cokeline').setup()
-    end
   },
   {
     "folke/which-key.nvim",
