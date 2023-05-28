@@ -1,2 +1,2 @@
-require("barbecue.ui").toggle(true)
+require('barbecue.ui').toggle(true)
 

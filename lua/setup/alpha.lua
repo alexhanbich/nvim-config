@@ -1,3 +1,11 @@
+-- remove tilde on startup screen
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = "alpha",
+    callback = function()
+        vim.wo.fillchars = 'eob: '
+    end,
+})
+
 local if_nil = vim.F.if_nil
 
 local default_terminal = {
@@ -20,18 +28,21 @@ local default_header = {
         [[ ]],
         [[ ]],
         [[ ]],
+        [[ ]],
+        [[ ]],
+        [[ ]],
     },
     opts = {
-        position = "center",
+        position = 'center',
         hl = "Type",
     },
 }
 
 local footer = {
-    type = "text",
+    type = 'text',
     val = "",
     opts = {
-        position = "center",
+        position = 'center',
         hl = "Number",
     },
 }
@@ -50,7 +61,7 @@ local function button(sc, txt, keybind, keybind_opts)
         shortcut = sc,
         cursor = 3,
         width = 50,
-        align_shortcut = "right",
+        align_shortcut = 'right',
         hl_shortcut = "Keyword",
     }
     if keybind then
@@ -59,7 +70,7 @@ local function button(sc, txt, keybind, keybind_opts)
     end
 
     local function on_press()
-        local key = vim.api.nvim_replace_termcodes(keybind or sc_ .. "<Ignore>", true, false, true)
+        local key = vim.api.nvim_replace_termcodes(keybind or sc_ .. '<Ignore>', true, false, true)
         vim.api.nvim_feedkeys(key, "t", false)
     end
 
@@ -74,13 +85,13 @@ end
 local buttons = {
     type = "group",
     val = {
-        button("n", "  New file", "<cmd>ene <CR>"),
-        button("SPC f f", "󰈞  Find file"),
-        button("SPC o f", "󰊄  Recently opened files"),
-        button("SPC l g", "󰈬  Live grep"),
-        button("SPC j m", "  Jump to marks"),
-        button("SPC r s", "  Restore last session"),
-        button( "q", "  Quit NVIM" , ":qa<CR>")
+        button("SPC ls", "  Open last session"),
+        button('SPC ff', '󰈞  Find File'),
+        button('SPC n', '  View Marks'),
+        button('-', '  File Explorer'),
+        button('SPC of', '  Old Files'),
+        button('SPC lg', '󰈬  Live Grep'),
+        button("q", "  Quit NVIM", ":qa<CR>")
     },
     opts = {
         spacing = 1,

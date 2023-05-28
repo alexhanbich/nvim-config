@@ -1,52 +1,26 @@
 return {
-  {
-    'sainnhe/gruvbox-material',
-    priority = 1000,
-  },
-{
-    'sainnhe/sonokai',
-    priority = 1000,
-  },
-  {
-    "rebelot/kanagawa.nvim",
-    priority = 1000,
-    config = function()
-      require('kanagawa').setup({
-        theme = "dragon",
-        background = {
-          dark = "dragon",
-          light = "dragon"
-        },
+  -- {
+  --   'EdenEast/nightfox.nvim',
+  --   priority = 1000,
+  --   config = function()
+  --     require('nightfox').setup {
+  --       options = {
+  --         transparent = true
+  --       }
+  --     }
+  --   end
+  -- },
+  { "catppuccin/nvim",
+  priority = 1000,
+  config = function()
+    require("catppuccin").setup({
+      flavour = "mocha", -- latte, frappe, macchiato, mocha
+      background = { -- :h background
+          light = "mocha",
+          dark = "mocha",
+      },
+      transparent_background = true,
       })
     end
-  },
-  {
-    'AlexvZyl/nordic.nvim',
-    priority = 1000,
-    config = function()
-      require 'nordic'.setup {
-        telescope = {
-          style = 'classic',
-        }
-      }
-    end
-  },
-  {
-    'rmehri01/onenord.nvim',
-    priority = 1000,
-    config = function()
-      require 'onenord'.setup()
-    end
-
-  },
-  {
-    "neanias/everforest-nvim",
-    priority = 1000,
-    config = function()
-      require("everforest").setup({
-        background = "hard",
-      })
-    end
-
-  },
+  }
 }

@@ -3,29 +3,9 @@ return {
   'tpope/vim-rhubarb',
   'tpope/vim-sleuth',
   'nvim-tree/nvim-web-devicons',
-  "lukas-reineke/indent-blankline.nvim",
-  { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
-  {
-    'alexhanbich/tabline.nvim',
-    config = function()
-      require 'tabline'.setup {
-        enable = false,
-        options = {
-          section_separators = {'', ''},
-          component_separators = {'', ''},
-          max_bufferline_percent = 100,
-          show_tabs_always = false,
-          show_devicons = true,
-          show_bufnr = true,
-          show_filename_only = true,
-          modified_icon = "+ ",
-          modified_italic = false,
-          show_tabs_only = false,
-        }
-      }
-    end,
-    dependencies = { 'nvim-lualine/lualine.nvim', 'nvim-tree/nvim-web-devicons' }
-  },
+  'lukas-reineke/indent-blankline.nvim',
+  'mbbill/undotree',
+  'Shatur/neovim-session-manager',
   {
     'numToStr/Comment.nvim',
     config = function()
@@ -33,12 +13,32 @@ return {
     end
   },
   {
-    "utilyre/barbecue.nvim",
-    name = "barbecue",
-    version = "*",
+    'alexhanbich/harpoon',
     dependencies = {
-      "SmiteshP/nvim-navic",
-      "nvim-tree/nvim-web-devicons", -- optional dependency
+      'nvim-lua/plenary.nvim'
+    }
+  },
+  {
+    'goolord/alpha-nvim',
+    config = function()
+      require 'alpha'.setup(require 'setup.alpha'.config)
+    end
+  },
+  {
+    'folke/noice.nvim',
+    event = 'VeryLazy',
+    dependencies = {
+      'MunifTanjim/nui.nvim',
+      "rcarriga/nvim-notify",
+    }
+  },
+  {
+    'utilyre/barbecue.nvim',
+    name = 'barbecue',
+    version = '*',
+    dependencies = {
+      'SmiteshP/nvim-navic',
+      'nvim-tree/nvim-web-devicons', -- optional dependency
     },
     opts = {
       theme = {
@@ -48,47 +48,15 @@ return {
   },
   {
     'stevearc/oil.nvim',
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-  },
-  {
-    "folke/which-key.nvim",
-    event = "VeryLazy",
-    init = function()
-      vim.o.timeout = true
-      vim.o.timeoutlen = 700
-    end,
-    opts = {
-      -- triggers = "none",
-      show_help = false,
-      show_keys = false,
-    }
-  },
-  {
-    'Shatur/neovim-session-manager',
-    dependencies = { 'nvim-lua/plenary.nvim' },
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
   },
   {
     'akinsho/toggleterm.nvim',
-    version = "*",
+    version = '*',
     config = true
   },
   {
-    'goolord/alpha-nvim',
-    config = function()
-      require 'alpha'.setup(require 'start_screen'.config)
-    end
-  },
-  {
     'lewis6991/gitsigns.nvim',
-    options = {
-      signs = {
-        add = { text = '+' },
-        change = { text = '~' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
-      }
-    },
   },
   {
     'nvim-lualine/lualine.nvim',

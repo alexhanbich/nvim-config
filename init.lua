@@ -1,5 +1,5 @@
 -- set mapleader to space
-vim.keymap.set({ 'n', 'v' }, '<space>', '<Nop>', {silent = true, remap = false })
+vim.keymap.set({ 'n', 'v' }, '<space>', '<nop>', {silent = true, remap = false })
 vim.g.mapleader = ' '
 
 -- disable netrw
@@ -21,13 +21,13 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- import plugin specs
-require("lazy").setup("plugins")
+require('lazy').setup('plugins')
 
-require("setup")
+require('setup')
 
 -- import vim options
-require("vim_options")
+require('vim_options')
 
 -- import key mappings
-require("remaps")
+require('remaps')
 

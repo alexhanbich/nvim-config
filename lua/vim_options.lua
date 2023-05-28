@@ -1,5 +1,5 @@
 -- fat cursor
-vim.opt.guicursor = ""
+vim.opt.guicursor = ''
 
 -- search options
 vim.o.hlsearch = false
@@ -18,7 +18,6 @@ vim.o.clipboard = 'unnamedplus'
 vim.opt.scrolloff = 8
 vim.opt.wrap = false
 vim.wo.signcolumn = 'yes'
-vim.opt.colorcolumn = '80'
 vim.o.termguicolors = true
 vim.o.background = 'dark'
 
@@ -33,7 +32,9 @@ vim.o.undofile = true
 -- Decrease update time
 vim.o.updatetime = 250
 vim.o.timeout = true
-vim.o.timeoutlen = 300
+vim.o.timeoutlen = 1000
+vim.o.ttimeout = true
+vim.o.ttimeoutlen = 1000
 
 -- autocomplete options 
 vim.o.completeopt = 'menuone,noselect'
