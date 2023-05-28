@@ -7,6 +7,10 @@ return {
   'mbbill/undotree',
   'Shatur/neovim-session-manager',
   {
+    'stevearc/dressing.nvim',
+    opts = {},
+  },
+  {
     'numToStr/Comment.nvim',
     config = function()
       require('Comment').setup()

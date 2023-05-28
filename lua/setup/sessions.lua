@@ -15,5 +15,7 @@ vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
   end
 })
 
-vim.keymap.set('n', '<leader>ls', ':SessionManager load_last_session<cr>', { desc = 'FZF Grep' })
+vim.keymap.set('n', '<leader>ss', ':SessionManager load_last_session<cr>', { desc = 'Last Session', silent = true })
+vim.keymap.set('n', '<leader>ls', ':SessionManager load_session<cr>', { desc = 'Load Session', silent = true })
+vim.keymap.set('n', '<leader>ds', ':SessionManager delete_session<cr>', { desc = 'Delete Session', silent = true })
 

@@ -20,16 +20,7 @@ require('telescope').setup {
     search_history = {
       initial_mode = 'normal',
     },
-    git_commits = {
-      initial_mode = 'normal',
-    },
-    git_status = {
-      initial_mode = 'normal',
-    },
-    git_branches = {
-      initial_mode = 'normal',
-    },
-  },
+ },
   extensions = {
     sessions_picker = {
       sessions_dir = vim.fn.stdpath('data') ..'/session/',  -- same as '/home/user/.local/share/nvim/session'
@@ -41,6 +32,9 @@ local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Find Files' })
 vim.keymap.set('n', '<leader>fg', builtin.git_files, { desc = 'Find Git Files' })
 vim.keymap.set('n', '<leader>lg', builtin.live_grep, { desc = 'FZF Grep' })
+
+
+
 
 vim.keymap.set('n', '<leader>of', builtin.oldfiles, { desc = 'Old Files' })
 vim.keymap.set('n', '<leader>cm', builtin.commands, { desc = 'Available Commands' })

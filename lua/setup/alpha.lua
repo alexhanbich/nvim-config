@@ -85,7 +85,7 @@ end
 local buttons = {
     type = "group",
     val = {
-        button("SPC ls", "  Open last session"),
+        button("SPC ls", "  View Sessions"),
         button('SPC ff', '󰈞  Find File'),
         button('SPC n', '  View Marks'),
         button('-', '  File Explorer'),
