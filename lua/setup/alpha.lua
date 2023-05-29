@@ -85,11 +85,11 @@ end
 local buttons = {
     type = "group",
     val = {
-        button("SPC ls", "  View Sessions"),
+        button("SPC ss", "  Restore Session"),
+        button("SPC ls", "󱦞  View Sessions"),
         button('SPC ff', '󰈞  Find File'),
         button('SPC n', '  View Marks'),
         button('-', '  File Explorer'),
-        button('SPC of', '  Old Files'),
         button('SPC lg', '󰈬  Live Grep'),
         button("q", "  Quit NVIM", ":qa<CR>")
     },

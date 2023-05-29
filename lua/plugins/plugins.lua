@@ -4,7 +4,7 @@ return {
   'tpope/vim-sleuth',
   'nvim-tree/nvim-web-devicons',
   'lukas-reineke/indent-blankline.nvim',
-  'mbbill/undotree',
+  'alexhanbich/undotree',
   'Shatur/neovim-session-manager',
   {
     'stevearc/dressing.nvim',
@@ -75,7 +75,9 @@ return {
   {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
-    dependencies = { 'nvim-lua/plenary.nvim' }
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+    }
   },
   {
     'nvim-telescope/telescope-fzf-native.nvim',
